@@ -6,9 +6,7 @@
 
     <groupId>gitwithgig</groupId>
     <artifactId>AttackoftheBytes</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <url>https://mvnrepository.com/artifact/commons-codec/commons-codec</url>
-    
+    <version>1.0-SNAPSHOT</version> 
     <dependencies>
         <dependency>
             <groupId>commons-codec</groupId>
