@@ -6,17 +6,19 @@ import java.lang.Integer;
 
 public class AttackofTheBytes {
 
-    /* Fields: These are constant values. */
+    /* Fields: These are constant values.
+    * AbsMin holds a value of -128, the minimum value a byte can take.
+    * AbsMax holds a value of 127, the maximum value a byte can take.*/
     private static final Byte AbsMin = Byte.MIN_VALUE; // MIN_VALUE = (-2)^7 = -128;
     private static final Byte AbsMax = Byte.MAX_VALUE; // MAX_VALUE = 2^7 - 1 = 128 - 1 = 127;
 
-    /* Private Methods */
+    /* Package-Private Methods */
 
     /** dec2bin converts an integer to a binary string of 8 digits
      * @param x is an integer in decimal format (i.e. base 10)
      * @return a padded binary (i.e. base 2) string of integer x
      */
-    private String dec2bin(int x){
+    String dec2bin(int x){
 
         //initialize binary string of int x
         String bs = Integer.toBinaryString(x); // bs = binary string
@@ -39,7 +41,7 @@ public class AttackofTheBytes {
      * @param y is an integer in decimal format
      * @return a padded octal (i.e. base 8) string of integer y
      */
-    private String dec2oct(int y){
+    String dec2oct(int y){
 
         // initialize octal string of int y
         String os = Integer.toOctalString(y); // os = octal string
@@ -62,7 +64,7 @@ public class AttackofTheBytes {
      * @param z is an integer in decimal format
      * @return a padded hexadecimal (i.e. base 16) string of integer z
      */
-    private String dec2hex(int z){
+    String dec2hex(int z){
 
         // initialize hexadecimal string of int z
         String hs = Integer.toHexString(z); // hs = hex string
@@ -77,6 +79,8 @@ public class AttackofTheBytes {
         }
     }
 
+     /* Private Methods */
+
     /** pval prints out the padded hexadecimal, octal, and binary strings to the screen in columns
      * @param u1 is the local minimum
      * @param u2 is the local maximum
@@ -89,14 +93,16 @@ public class AttackofTheBytes {
         }
     }
 
-    /**  This is the main method. It's always the last method in the code.*/
-     /* @param args carries the command line arguments as an array of strings
-     */
+    /**  This is the main method. It's always the last method in the code.
+    * @param args carries the command line arguments as an array of strings
+    * method intValue() converts bytes to integers.
+    * v1 represents the lower bound of unsigned byte range.
+    * v2 represents the upper bound of the unsigned byte range.
+    * The offset of 128 adjusts the signed byte range (-128 to 127) to the unsigned byte range (0 to 255).*/
     public static void main(String[] args){
         AttackofTheBytes obj = new AttackofTheBytes(); // new instance; obj = object
         int v1 = AbsMin.intValue()+128; // Minimum value is -128; offset to 0
         int v2 = AbsMax.intValue()+128; // Maximum value is 127; offset to 255
         obj.pval(v1,v2); // runs v1 and v2 through pval
     }
-
 }
