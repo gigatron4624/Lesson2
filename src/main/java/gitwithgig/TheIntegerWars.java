@@ -1,4 +1,5 @@
-/* This program prints values that a 32-bit signed integer can accept. */
+/* This program prints values that a 32-bit signed integer can accept as tables of strings. Each row lists the decimal,
+ * hexadecimal, octal, and binary representations for each integer value. */
 package gitwithgig;
 
 import java.lang.Integer;
@@ -6,8 +7,8 @@ import java.lang.Integer;
 public class TheIntegerWars {
 
     /* Fields: These are constant values.
-    * AbsMin holds a value of -2147483648, the minimum value for a 32-bit signed integer.
-    * AbsMax holds a value of 2147483647, the maximum value for a 32-bit signed integer. */
+     * AbsMin holds a value of -2147483648, the minimum value for a 32-bit signed integer.
+     * AbsMax holds a value of 2147483647, the maximum value for a 32-bit signed integer. */
     private static final Integer AbsMin = Integer.MIN_VALUE; // MIN_VALUE = (-2)^31 = -2147483648
     private static final Integer AbsMax = Integer.MAX_VALUE; // MAX_VALUE = 2^31 - 1 = 2147483647
 
@@ -86,9 +87,8 @@ public class TheIntegerWars {
 
     /** pcol prints out the decimal integers and the padded strings in columns
      * order: decimal integer, hex string, octal string, binary string
-     * @param d1 is the lower bound
-     * @param d2 is the upper bound
-     */
+     * @param d1 is the lower bound of the range of input values
+     * @param d2 is the upper bound of the range of input values */
     private void pcol(int d1, int d2){
         System.out.printf("%-16s %-13s %-16s %-1s\n", "Decimal", "Hex", "Octal", "Binary"); // header line
         for (int i = d1; i <= d2; i++){
@@ -96,27 +96,30 @@ public class TheIntegerWars {
         }
     }
 
-    /* This is the main method.
-    * */
+    /** This is the main method. Almost all classes require a main method to run code.
+     * In this program, main calls pcol to print four sequences of values.
+     * @param args carries the command line arguments as an array of strings.*/
     public static void main(String[] args){
         TheIntegerWars obj = new TheIntegerWars(); // new instance; obj = object.
-        System.out.println(AbsMax+2); // Integer.MAX_VALUE + 2;
-        System.out.println(AbsMax-2); // Integer.MAX_VALUE - 2;
-        System.out.println(AbsMin+1); // Integer.MIN_VALUE + 1;
-        System.out.println(AbsMin-3); // Integer.MIN VALUE - 3;
 
-        System.out.println("Range: -32 to -1");
-        obj.pcol(-32, -1);
-        System.out.println("Range: 0 to 31");
-        obj.pcol(0,31);
+        System.out.println(AbsMax-2); // Integer.MAX_VALUE - 2 = 2147483647 - 2 = 2147483645
+        System.out.println(AbsMax+2); // Integer.MAX_VALUE + 2 = 2147483647 + 2 = 2147483649
+        // The value 2147483649 is stored as -2147483647 to circumvent integer overflow.
 
-        obj.pcol(2147483645,  2147483646);
-        obj.pcol(-2147483648, -2147483646);
+        System.out.println(AbsMin+1); // Integer.MIN_VALUE + 1 = -2147483648 + 1 = -2147483647
+        System.out.println(AbsMin-3); // Integer.MIN VALUE - 3 = -2147483647 - 3 = -2147483651
+        // The value -2147483651 is stored as 2147483645 to circumvent integer underflow.
 
-        System.out.println("Range: AbsMax+2 to AbsMax-2");
-        obj.pcol(AbsMax+2, AbsMax-2);
+        System.out.println("Range: -32 to -1"); // first sequence of values
+        obj.pcol(-32, -1); // prints sequence
 
-        System.out.println("Range: AbsMin+1 to AbsMin-3");
+        System.out.println("Range: 0 to 31"); // second sequence of values
+        obj.pcol(0,31); // prints sequence
+
+        System.out.println("Range: AbsMax+2 to AbsMax-2"); // third sequence of values
+        obj.pcol(AbsMax-2, AbsMax+2);
+
+        System.out.println("Range: AbsMin+1 to AbsMin-3"); // fourth and final sequence of values
         obj.pcol(AbsMin+1, AbsMin-3);
 
     }
