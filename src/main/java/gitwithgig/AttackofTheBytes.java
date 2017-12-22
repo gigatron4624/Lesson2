@@ -1,4 +1,5 @@
-/* This program prints all the values a byte can take. */
+/* The following program prints all the values a byte can take as a table of strings. Each row contains the decimal,
+ * hexadecimal, octal, and binary representations of each unsigned byte value in increasing decimal order. */
 package gitwithgig;
 
 import java.lang.Byte;
@@ -7,8 +8,8 @@ import java.lang.Integer;
 public class AttackofTheBytes {
 
     /* Fields: These are constant values.
-    * AbsMin holds a value of -128, the minimum value a byte can take.
-    * AbsMax holds a value of 127, the maximum value a byte can take.*/
+     * AbsMin holds a value of -128, the minimum value a byte can take.
+     * AbsMax holds a value of 127, the maximum value a byte can take.*/
     private static final Byte AbsMin = Byte.MIN_VALUE; // MIN_VALUE = (-2)^7 = -128;
     private static final Byte AbsMax = Byte.MAX_VALUE; // MAX_VALUE = 2^7 - 1 = 128 - 1 = 127;
 
@@ -79,7 +80,7 @@ public class AttackofTheBytes {
         }
     }
 
-     /* Private Methods */
+    /* Private Methods */
 
     /** pval prints out the padded hexadecimal, octal, and binary strings to the screen in columns
      * @param u1 is the local minimum
@@ -94,11 +95,11 @@ public class AttackofTheBytes {
     }
 
     /**  This is the main method. It's always the last method in the code.
-    * @param args carries the command line arguments as an array of strings
-    * method intValue() converts bytes to integers.
-    * v1 represents the lower bound of unsigned byte range.
-    * v2 represents the upper bound of the unsigned byte range.
-    * The offset of 128 adjusts the signed byte range (-128 to 127) to the unsigned byte range (0 to 255).*/
+     * @param args carries the command line arguments as an array of strings
+     * method intValue() converts bytes to integers.
+     * v1 represents the lower bound of unsigned byte range.
+     * v2 represents the upper bound of the unsigned byte range.
+     * The offset of 128 adjusts the signed byte range (-128 to 127) to the unsigned byte range (0 to 255).*/
     public static void main(String[] args){
         AttackofTheBytes obj = new AttackofTheBytes(); // new instance; obj = object
         int v1 = AbsMin.intValue()+128; // Minimum value is -128; offset to 0
