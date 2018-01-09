@@ -28,7 +28,7 @@ public class IntReview {
      * Each test method will throw an exception if the actual length and expected length don't match.*/
 
     @Test
-    public void testbin(){
+    public void testbin() throws Exception{
         TheIntegerWars obj = new TheIntegerWars(); // invokes source code and instantiates object
 
         /* dec2bin: converts decimal integers to padded binary strings
